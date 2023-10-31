@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-crimson {
+  font-family: 'Crimson Text', serif;
+  
+}
+
+.font-staatliches {
+  font-family: 'Staatliches', sans-serif;
+ 
+}

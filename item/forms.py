@@ -13,7 +13,7 @@ class NewItemForm(forms.ModelForm):
             "category": forms.Select(attrs={"class": INPUT_CLASSES}),
             "name": forms.TextInput(attrs={"class": INPUT_CLASSES}),
             "descrition": forms.Textarea(attrs={"class": INPUT_CLASSES}),
-            "donation": forms.TextInput(attrs={"class": INPUT_CLASSES}),
+            "donation": forms.NumberInput(attrs={"class": INPUT_CLASSES}),
             "image": forms.FileInput(attrs={"class": INPUT_CLASSES}),
         }
 
@@ -25,6 +25,6 @@ class EditItemForm(forms.ModelForm):
         widgets = {
             "name": forms.TextInput(attrs={"class": INPUT_CLASSES}),
             "descrition": forms.Textarea(attrs={"class": INPUT_CLASSES}),
-            "donation": forms.TextInput(attrs={"class": INPUT_CLASSES}),
+            "donation": forms.NumberInput(attrs={"class": INPUT_CLASSES}),
             "image": forms.FileInput(attrs={"class": INPUT_CLASSES}),
         }
