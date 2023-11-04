@@ -24,6 +24,7 @@ class Item(models.Model):
     is_over = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, related_name="items", on_delete=models.CASCADE)
+    progress = models.FloatField()
 
     def __str__(self):
         return self.name

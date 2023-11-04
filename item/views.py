@@ -3,6 +3,7 @@ from django.db.models import Q
 from .models import Item, Category
 from django.contrib.auth.decorators import login_required
 from .forms import NewItemForm, EditItemForm
+from django.contrib import messages
 
 
 def items(request):
@@ -76,3 +77,16 @@ def edit(request, pk):
         form = EditItemForm(instance=item)
 
     return render(request, "item/form.html", {"form": form, "title": "Edit Project"})
+
+
+
+def update_progress(request, pk):
+    item = get_object_or_404(Item, pk=pk)
+    if item:
+        item.progress += 1
+        item.save()
+        messages.success(request, f'Progress updated successfully!')
+    else:
+        messages.error(request, f'Failed to update progress!')
+
+    return redirect("item:detail", pk)

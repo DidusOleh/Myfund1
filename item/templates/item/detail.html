@@ -21,18 +21,40 @@
         <div class="mt-6 p-6 bg-white rounded-xl">
             <p>This is your project!</p>
 
-            <a href="{% url 'item:edit' item.id%}"
+            <a href="{% url 'item:edit' item.id %}"
                 class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">Edit</a>
-            <a href="{% url 'item:delete' item.id%}"
+            <a href="{% url 'item:delete' item.id %}"
                 class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">Delete</a>
         </div>
         {%else %}
         <a href="{% url 'conversation:new' item.id %}"
             class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white hover:bg-teal-700 ">Contact
             founder</a>
+        <a href="{% url 'item:update_progress' item.id %}" onclick="move()"
+            class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">{{ item.progress }}</a>
+        
         {%endif%}
+          
+        <style> 
+            #myProgress {
+                width: 100%;
+                background-color: grey;
+            }
+            #myBar {
+                width: {{ item.progress }}%;
+                height: 30px;
+                background-color: #4CAF50;
+                text-align: center; /* To center it horizontally (if you want) */
+                line-height: 30px; /* To center it vertically */
+                color: white;
+            
+            }
+        </style>
+
     </div>
 </div>
+
+
 <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
     <h2 class="mb-12 text-2xl text-center">Related items</h2>
     <div class="grid grid-cols-3 gap-3">
