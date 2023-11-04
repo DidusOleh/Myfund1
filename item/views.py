@@ -79,7 +79,7 @@ def edit(request, pk):
     return render(request, "item/form.html", {"form": form, "title": "Edit Project"})
 
 
-
+@login_required
 def update_progress(request, pk):
     item = get_object_or_404(Item, pk=pk)
     if item:

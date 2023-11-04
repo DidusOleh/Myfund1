@@ -5,14 +5,16 @@
 {% block content %}
 <div class="flex justify-between">
     <div class="mt-20 ml-20 mb-10">
-        <p class="mb-3  text-white text-6xl font-normal w-850 h-215" style="font-family: staatliches; text-shadow: 0px 4px 4px #B1B0F7;">Create and <br> monetize your project</p>
+        <p class="mb-3  text-white text-6xl font-normal w-850 h-215" style=" font-family: staatliches; text-shadow: 0px 4px 4px #B1B0F7;">Create and <br> monetize your project</p>
         <p class="mb-3 text-white text-shadow-xl text-xl font-normal font-crimson w-740 h 180">Welcome to our IT crowdfunding platform, where<br> innovation starts with you! <br>
             We believe in the power of technological ideas <br>and creating the future together.</p>
-        <button class="p-1 bg-gradient-to-l text-white from-transparent via-orange-500 to-orange-900 font-crimson">START ADN TRY NOW</button>
+        <a href="{% url 'core:login' %}" 
+        class="p-1 py-2 h-3 bg-gradient-to-l text-white from-transparent via-orange-500 to-orange-900 font-crimson hover:opacity-80">START ADN TRY NOW</a>
     </div>
-    <div class="mr-20">
+    <div class="mr-20 flex 1 mt-20">
         {% load static %}
-        <img src="{% static 'images/moon.png' %}" alt="Moon" class="mt-40 object-cover animate-bounc w-45 h-40 ">
+        <img src="{% static 'images/moon.png' %}" alt="Moon" class=" object-cover min-w-fit max-h-80 invisible
+         md:visible lg:invisible">
     </div>
 </div>
 
@@ -23,8 +25,7 @@
         <div>
             <a href="{% url 'item:detail' item.id %}">
                 <div class="border rounded-t-xl" style="max-height: 400px;">
-                    <img src="{{item.image.url}}" class="rounded-t-xl object-cover " style="max-width: 100%; min-height: 400px; max-height: 400px;
-                    min-width: 100%;" >
+                    <img src="{{item.image.url}}" class="rounded-t-xl  object-cover  max-h-96" style=" min-height: 400px; min-width: 100%; max-width: 100%;"  >
                 </div>
 
                 <div class="p-6 bg-white rounded-b-xl">
@@ -48,7 +49,7 @@
             <a href="#">
                 <div class="pt-6 rounded-xl text-center" style="background-color: #b1b0f7 ">
                     <h2 class="text-2xl " style="font-family: Anonymous Pro">{{category.name}}</h2>
-                    <p class="p-1 text-right text-start rounded-b-xl" style="background-color: rgba(217, 217, 217, 0.50); text-color: #FFF;">{{category.items.count}} items</p>
+                    <p class="p-1 text-start rounded-b-xl" style="background-color: rgba(217, 217, 217, 0.50);">{{category.items.count}} items</p>
                 </div>
             </a>
         </div>
