@@ -22,15 +22,15 @@
     <h2 class="mb-12 text-4xl text-center text-white" style="font-family: staatliches;">Newest projects</h2>
     <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {% for item in items %}
-        <div>
+        <div class="rounded-xl hover:rounded-xl bg-teal-700 hover:bg-teal-800">
             <a href="{% url 'item:detail' item.id %}">
                 <div class="border rounded-t-xl" style="max-height: 400px;">
                     <img src="{{item.image.url}}" class="rounded-t-xl  object-cover  max-h-96" style=" min-height: 400px; min-width: 100%; max-width: 100%;"  >
                 </div>
 
-                <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">{{item.name}}</h2>
-                    <p class="text-gray-500">Donation: {{item.donation}}</p>
+                <div class="p-6 ">
+                    <h2 class="text-2xl text-amber-300">{{item.name}}</h2>
+                    <p class="text-gray-400">Donation: {{item.donation}}</p>
                 </div>
             </a>
         </div>

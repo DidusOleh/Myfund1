@@ -740,6 +740,9 @@ video {
 .font-crimson {
   font-family: Crimson Text, serif;
 }
+.bg-submit-color {
+  background-color: #B3F963;
+}
 
 .text-2xl {
   font-size: 1.5rem;
