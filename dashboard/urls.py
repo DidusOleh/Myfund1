@@ -5,4 +5,5 @@ app_name = "dashboard"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("edit/<int:pk>/", views.userEdit, name="edit"),
 ]

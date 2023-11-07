@@ -8,8 +8,13 @@
         <p class="mb-3  text-white text-6xl font-normal w-850 h-215" style=" font-family: staatliches; text-shadow: 0px 4px 4px #B1B0F7;">Create and <br> monetize your project</p>
         <p class="mb-3 text-white text-shadow-xl text-xl font-normal font-crimson w-740 h 180">Welcome to our IT crowdfunding platform, where<br> innovation starts with you! <br>
             We believe in the power of technological ideas <br>and creating the future together.</p>
+        {% if request.user.is_authenticated %}
+        <a  
+        class="p-1 py-2 h-3 bg-gradient-to-l text-white from-transparent via-orange-500 to-orange-900 font-crimson hover:opacity-80">START ADN TRY NOW</a>
+        {% else %}
         <a href="{% url 'core:login' %}" 
         class="p-1 py-2 h-3 bg-gradient-to-l text-white from-transparent via-orange-500 to-orange-900 font-crimson hover:opacity-80">START ADN TRY NOW</a>
+        {% endif %}
     </div>
     <div class="mr-20 flex 1 mt-20">
         {% load static %}

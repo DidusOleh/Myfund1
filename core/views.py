@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from item.models import Category, Item
-from django.contrib.auth.decorators import login_required
-from .forms import SignupForm, UserEditForm
-from django.contrib.auth.models import User
+from .forms import SignupForm
+
 
 
 def index(request):
@@ -33,15 +32,3 @@ def signup(request):
         form = SignupForm()
     return render(request, "core/signup.html", {"form": form})
 
-@login_required
-def user(request, pk):
-    user = User.objects.get(id=pk)
-    if request.method == "POST":
-        form = UserEditForm(request.POST,instance=user)
-        if form.is_valid():
-            form.save()
-
-            return redirect("user/<int:pk>/")
-    else:
-        form = UserEditForm(instance=user)
-    return render(request, "core/user.html",{'form': form})
