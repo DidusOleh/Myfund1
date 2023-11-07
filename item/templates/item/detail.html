@@ -2,29 +2,29 @@
 
 {%block title %}{{ item.name }}{%endblock%}
 {%block content %}
-<div class="grid grid-cols-5 gap-6">
-    <div class="col-span-3">
-        <img src="{{ item.image.url}}" class="rounded-xl">
+<div class="grid grid-cols-5 gap-6 mx-4">
+    <div class="ml-2 col-span-3 flex justify-center rounded-xl">
+        <img src="{{ item.image.url}}" class="rounded-xl object-cover max-h-80" style=" min-height: 400px; min-width: 400px; max-width: 400px;">
     </div>
-    <div class="col-span-2 p-6 bg-gray-100 rounded-xl width">
-        <h1 class="mb-6 text-3xl">{{item.name}}</h1>
-        <p class="text-gray-500"><strong>Donation: </strong>{{item.price}}</p>
-        <p class="text-gray-500"><strong>Founder: </strong>{{item.created_by.username}}</p>
+    <div class="text-white col-span-2 p-6 bg-teal-700 rounded-xl width      font-crimson">
+        <h1 class="space-y-2 mb-6 text-3xl" style="font-family: staatliches;">{{item.name}}</h1>
+        <p><strong>Donation: </strong>{{item.price}}</p>
+        <p><strong>Founder: </strong>{{item.created_by.username}}</p>
         {%if item.description %}
-        <p class="text-gray-700">
-            <strong class="text-gray-500">Description: </strong><br>
+        <p>
+            <strong class="text-">Description: </strong><br>
             {{item.description}}
         </p>
         {%endif%}
 
         {%if request.user == item.created_by %}
-        <div class="mt-6 p-6 bg-white rounded-xl">
-            <p>This is your project!</p>
+        <div class="mt-6 p-6  rounded-xl">
+            
 
             <a href="{% url 'item:edit' item.id %}"
-                class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">Edit</a>
+                 class="inline-block mt-6 py-3 px-6 text-lg rounded-xl font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">EDIT</a>
             <a href="{% url 'item:delete' item.id %}"
-                class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">Delete</a>
+                class="inline-block mt-6 px-6 py-3 text-lg font-semibol text-white rounded-xl" style="background-color: #FF5733 ">Delete</a>
         </div>
         {%else %}
         <a href="{% url 'conversation:new' item.id %}"
@@ -35,22 +35,18 @@
         
         {%endif%}
           
-        <div id="myProgress">
-            <div id="myBar"> {{ item.ptogress }} %</div>
+        <div id="myProgress" class="rounded-full bg-gray-600">
+            <div id="myBar" class="rounded-full h-8 text-center text-white"> {{ item.progress }} %</div>
           </div>
         <style> 
             #myProgress {
                 width: 100%;
-                background-color: grey;
+             
             }
             #myBar {
                 width: {{ item.progress }}%;
-                height: 30px;
                 background-color: #4CAF50;
-                text-align: center; /* To center it horizontally (if you want) */
                 line-height: 30px; /* To center it vertically */
-                color: white;
-            
             }
         </style>
 
@@ -58,18 +54,18 @@
 </div>
 
 
-<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-12 text-2xl text-center">Related items</h2>
+<div class="mt-6 px-6 py-12">
+    <h2 class="mb-12 text-4xl text-center text-white" style="font-family: staatliches;">Related items</h2>
     <div class="grid grid-cols-3 gap-3">
         {% for item in related_items %}
-        <div>
+        <div class="rounded-xl hover:rounded-xl bg-teal-700 hover:bg-teal-800">
             <a href="{% url 'item:detail' item.id %}">
                 <div>
                     <img src="{{item.image.url}}" class="rounded-t-xl">
                 </div>
 
-                <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">{{item.name}}</h2>
+                <div class="p-6">
+                    <h2 class="text-2xl text-amber-300">{{item.name}}</h2>
                     <p class="text-gray-500">Donation: {{item.donation}}</p>
 
                 </div>

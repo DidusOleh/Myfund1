@@ -5,7 +5,7 @@
 {%block content %}
 <div class="mx-6 font-crimson text-xl">
     <h1 class="mb-6 text-3xl text-white" style="font-family: staatliches;">{{title}}</h1>
-    <form method="post" action="." enctype="multipart/form-data" class="text-white placeholder:text-black">
+    <form method="post" action="." enctype="multipart/form-data" class="text-gray-300 placeholder:text-black">
         {%csrf_token%}
         <div class="space-y-4">
             {{form.as_p}}

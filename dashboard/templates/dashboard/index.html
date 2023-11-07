@@ -3,18 +3,31 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-12 text-2xl text-center">My projects</h2>
-    <div class="grid grid-cols-3 gap-3">
+<div class="text-white font-crimson flex">
+    <div class="mx-20">
+      <h2 class="mr-2">Username: link</h2>
+    	<h2>Name:</h2>
+      <h2>Surname:</h2>
+      <h2>Email:</h2>
+    </div>
+    <div>
+			<button class="py-2 px-8 text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">Change information</button>
+
+		</div>
+
+</div>
+<div class="mt-6 px-6 py-12 rounded-xl">
+    <h2 class="mb-12 text-5xl text-center text-white" style="font-family: staatliches;">My projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {% for item in items %}
-        <div>
+        <div class="rounded-xl hover:rounded-xl bg-teal-700 hover:bg-teal-800">
             <a href="{% url 'item:detail' item.id %}">
                 <div>
-                    <img src="{{item.image.url}}" class="rounded-t-xl" style="height: 400px;">
+                    <img src="{{item.image.url}}" class="rounded-t-xl  object-cover  max-h-96" style=" min-height: 400px; min-width: 100%; max-width: 100%;">
                 </div>
 
-                <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">{{item.name}}</h2>
+                <div class="p-6 ">
+                    <h2 class="text-2xl text-amber-300">{{item.name}}</h2>
                     <p class="text-gray-500">Donation: {{item.donation}}</p>
                 </div>
             </a>

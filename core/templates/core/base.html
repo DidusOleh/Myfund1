@@ -18,7 +18,7 @@
 </head>
 
 <body class="bg-teal-900 p-0 m-0">
-    <nav class="pr-20 py-6 flex justify-between items-center border-slate-950" style="height: 104px;">
+    <nav class="pr-20 py-6 flex justify-between items-center" style="height: 104px;">
         <a href="/" class="ml-20 text-xl text-white font-bold hover:text-gray-300" style="font-family: zen dots;">FundMe</a>
         <div class="space-x-2 flex items-center">
             <a href="{% url 'item:new' %}" class="mr-2 text-lg text-white font-crimson  hover:text-gray-300 invisible  lg:visible">Add your inovations</a>
@@ -26,7 +26,7 @@
             {% if request.user.is_authenticated%}
             
             <a href="{% url 'conversation:inbox' %}"
-                class="px-10 py-1 border-2 border-indigo-400 text-lg font-crimson text-white  rounded-full hover:text-gray-300 ml-4  invisible md:visible lg:visible">Inbox
+                class="px-8 py-1 border-2 border-indigo-400 text-lg font-crimson text-white  rounded-full hover:text-gray-300 ml-4  invisible md:visible lg:visible">Inbox
             </a>
             <a href="{% url 'dashboard:index' %}"
                 class="px-5 py-1 text-lg border-2 bg-white text-teal-900 font-crimson rounded-full hover:bg-gray-300 hover:border-gray-300 invisible md:visible lg:visible">Dashboard</a>
@@ -49,7 +49,7 @@
         
     </nav>  
 
-    <div>
+    <div class="border-t-">
         {% block content %}
         {% endblock %}
     </div>

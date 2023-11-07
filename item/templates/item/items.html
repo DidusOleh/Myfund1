@@ -29,7 +29,7 @@
     <div class="col-span-3 max-w-lg lg:max-w-5xl">
         <div class="mr-10 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3 invisible md:visible">
             {% for item in items %}
-                {% if forloop.counter <= 2 %}
+              
 
                 <div class="rounded-xl hover:rounded-xl bg-teal-700 hover:bg-teal-800" >
                    <a href="{% url 'item:detail' item.id %}">
@@ -43,7 +43,7 @@
                     </div>
                     </a>
                 </div>
-                {% endif %}
+                
             {% endfor %}
         </div>
     </div>
