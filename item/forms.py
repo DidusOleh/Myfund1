@@ -21,8 +21,9 @@ class NewItemForm(forms.ModelForm):
 class EditItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ("name", "description", "donation", "image", "is_over")
+        fields = ("category", "name", "description", "donation", "image", "is_over")
         widgets = {
+            "category": forms.Select(attrs={"class": INPUT_CLASSES}),
             "name": forms.TextInput(attrs={"class": INPUT_CLASSES}),
             "description": forms.Textarea(attrs={"class": INPUT_CLASSES, "style": "border-radius: 25px;"}),
             "donation": forms.NumberInput(attrs={"class": INPUT_CLASSES}),
