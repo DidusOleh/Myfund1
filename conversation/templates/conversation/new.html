@@ -4,11 +4,11 @@
 
 {% block content %}
 
-<h1 class="mb-6 text-3xl">New conversation</h1>
+<h1 class="mb-6 text-center text-4xl text-white" style="font-family: staatliches;">New conversation</h1>
 
 <form method="post" action=".">
     {%csrf_token%}
-    <div class="space-y-4">
+    <div class="mx-6 space-y-4 text-white text-lg text-center" style="font-family: staatliches;">
         {{form.as_p}}
     </div>
     {% if form.errors or form.non_field_errors%}
@@ -20,7 +20,7 @@
         {{form.non_field_errors}}
     </div>
     {%endif%}
-    <button class="mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Send</button>
+    <button class="mt-6 ml-14 py-4 px-8 text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">Send</button>
 </form>
 
 {%endblock%}

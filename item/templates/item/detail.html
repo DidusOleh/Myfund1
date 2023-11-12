@@ -28,10 +28,10 @@
         </div>
         {%else %}
         <a href="{% url 'conversation:new' item.id %}"
-            class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white hover:bg-teal-700 ">Contact
+            class="my-2 inline-block mt-6 px-6 py-3  text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">Contact
             founder</a>
         <a href="{% url 'item:update_progress' item.id %}" onclick="move()"
-            class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">{{ item.progress }}</a>
+            class="inline-block mt-6 px-6 py-3  text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">{{ item.progress }}</a>
         
         {%endif%}
           
@@ -54,19 +54,19 @@
 </div>
 
 
-<div class="mt-6 px-6 py-12">
-    <h2 class="mb-12 text-4xl text-center text-white" style="font-family: staatliches;">Related items</h2>
-    <div class="grid grid-cols-3 gap-3">
+<div class="mt-6 px-6 py-12 bg-teal-900">
+    <h2 class="mb-12 text-4xl text-white" style="font-family: staatliches;">Related items</h2>
+    <div class="grid gap-3 grid-cols-3">
         {% for item in related_items %}
-        <div class="rounded-xl hover:rounded-xl bg-teal-700 hover:bg-teal-800">
+        <div class="rounded-xl w-96 hover:rounded-xl bg-teal-700 hover:bg-teal-800" >
             <a href="{% url 'item:detail' item.id %}">
-                <div>
-                    <img src="{{item.image.url}}" class="rounded-t-xl">
+                <div class="border rounded-t-xl" style="max-height: 400px;">
+                    <img src="{{item.image.url}}" class="rounded-t-xl object-cover  max-h-96" style="min-height: 400px; min-width: 100%; max-width: 100%;">
                 </div>
 
                 <div class="p-6">
                     <h2 class="text-2xl text-amber-300">{{item.name}}</h2>
-                    <p class="text-gray-500">Donation: {{item.donation}}</p>
+                    <p class="text-gray-400">Donation: {{item.donation}}</p>
 
                 </div>
             </a>
