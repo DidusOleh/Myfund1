@@ -3,19 +3,17 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<div class="text-white font-crimson flex">
-    <div class="mx-20">
-        <h2 class="mr-2">Username: {{ user.username }}</h2>
-        <h2>Name:{{ user.first_name }}</h2>
-        <h2>Surname:{{ user.last_name }}</h2>
-        <h2>Email:{{ user.email }}</h2>
-    </div>
-    <div>
-        <a href="{% url 'dashboard:edit' user.id %}" class="py-2 px-8 text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">Change information</a>
+<div class="text-white flex text-center sm:text-left">
+    <div class="mx-20 font-seibold text-lg font-crimson" tyle="font-family: staatliches;">
+        <p class="text-5xl text-center text-white" style="font-family: staatliches;">Profile information</p>
+        <h2>Username: {{ user.username }}</h2>
+        <h2>Name: {{ user.first_name }}</h2>
+        <h2>Surname: {{ user.last_name }}</h2>
+        <h2 class="mb-4">Email: {{ user.email }}</h2>
+        <a href="{% url 'dashboard:edit' user.id %}" class="mt-4 py-2 px-8 text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">Change information</a>
 	</div>
-
 </div>
-<div class="mt-6 px-6 py-12 rounded-xl">
+<div class=" px-6 py-12 rounded-xl">
     <h2 class="mb-12 text-5xl text-center text-white" style="font-family: staatliches;">My projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {% for item in items %}
