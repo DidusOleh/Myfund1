@@ -1,0 +1,41 @@
+{% extends "core/base.html" %}
+
+{%block title %}Donation{%endblock%}
+{%block content %}
+
+<h2 class="mb-12 text-5xl text-center text-white" style="font-family: staatliches;">Donation</h2>
+
+<div class="w-8/12 md:w-1/2 lg:1/2 my-6 mx-auto p-6 rounded-xl grid justify-items-center" style="background: rgba(177, 176, 247, 0.09); ">
+  <h1 class="mb-0 text-3xl  text-white" style="font-family: staatliches;">Donate</h1>
+  <form method="post" action=".">
+      {% csrf_token %}
+      <div class="mb-0"><br>
+          <label class="inline-block ml-4 mb-0.5 font-crimson text-white text-lg">Username</label>
+          {{form.username}}
+      </div>
+
+      <div class="mb-0"><br>
+          <label class="inline-block ml-4 mb-0.5 font-crimson text-white text-lg ">Project Name</label>
+          {{form.email}}
+      </div>
+
+      <div class="mb-0"><br>
+          <label class="inline-block ml-4 mb-0.5 font-crimson text-white text-lg">Donation</label>
+          {{form.password1}}
+      </div>
+
+      {% if form.errors or form.non_field_errors%}
+      <div class="mb-3 p-6 bg-red-100 rounded-xl">
+          {% for field in form%}
+          {{ field.errors}}
+          {% endfor %}
+
+          {{form.non_field_errors}}
+      </div>
+      {%endif%}
+      <div class="flex items-center justify-center"> 
+          <button class="mt-2 py-2 px-8 text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">SUBMIT</button>
+  </div>
+  </form>
+</div>
+{%endblock%}

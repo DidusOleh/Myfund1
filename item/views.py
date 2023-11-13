@@ -90,3 +90,7 @@ def update_progress(request, pk):
         messages.error(request, f'Failed to update progress!')
 
     return redirect("item:detail", pk)
+
+@login_required
+def donate(request, pk):
+    return render(request, "item/donate.html")

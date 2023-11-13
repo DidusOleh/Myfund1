@@ -24,14 +24,14 @@
             <a href="{% url 'item:edit' item.id %}"
                  class="inline-block mt-6 py-3 px-6 text-lg rounded-xl font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">EDIT</a>
             <a href="{% url 'item:delete' item.id %}"
-                class="inline-block my-2 mt-6 px-6 py-3 text-lg font-semibol text-white rounded-xl" style="background-color: #FF5733 ">Delete</a>
+                class="inline-block my-2 mt-2 px-6 py-3 text-lg font-semibol text-white rounded-xl" style="background-color: #FF5733 ">Delete</a>
         </div>
         {%else %}
         <a href="{% url 'conversation:new' item.id %}"
             class="inline-block mt-6 px-6 py-3  text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">Contact
             founder</a>
         <a href="{% url 'item:update_progress' item.id %}" onclick="move()"
-            class="inline-block my-2 mt-6 px-6 py-3  text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">{{ item.progress }}</a>
+            class="inline-block my-2 mt-2  px-6 py-3  text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">{{ item.progress }}</a>
         
         {%endif%}
           
