@@ -62,7 +62,7 @@
     <h2 class="mb-12 text-4xl text-center text-white" style="font-family: staatliches;">Related items</h2>
     <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {% for item in related_items %}
-        <div class="rounded-xl w-96 hover:rounded-xl bg-teal-700 hover:bg-teal-800 hover:opacity-90" >
+        <div class="rounded-xl w-full hover:rounded-xl bg-teal-700 hover:bg-teal-800 hover:opacity-90" >
             <a href="{% url 'item:detail' item.id %}">
                 <div class="border rounded-t-xl" style="max-height: 400px;">
                     <img src="{{item.image.url}}" class="rounded-t-xl object-cover  max-h-96" style="min-height: 400px; min-width: 100%; max-width: 100%;">
