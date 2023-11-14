@@ -5,6 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+     <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <title>{% block title %}{% endblock %} | FundMe</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles/style.css' %}">
@@ -18,36 +26,60 @@
 </head>
 
 <body class="bg-teal-900 p-0 m-0 flex flex-col min-h-screen">
-    <nav class="pr-6 py-6 flex justify-between items-center" style="height: 104px;">
-        <a href="/" class="ml-20 text-xl text-white font-bold hover:text-gray-300" style="font-family: zen dots;">FundMe</a>
-        <div class="space-x-2 flex items-center">
-            <a href="{% url 'item:new' %}" class="mr-2 text-lg text-white font-crimson  hover:text-gray-300 invisible  lg:visible">Add your inovations</a>
-            <a href="{%url 'item:items' %}" class="text-lg text-white font-crimson hover:text-gray-300 invisible md:visible lg:visible">Browse</a>
-            {% if request.user.is_authenticated%}
-            
-            <a href="{% url 'conversation:inbox' %}"
-                class="px-8 py-1 border-2 border-indigo-400 text-lg font-crimson text-white  rounded-full hover:text-gray-300 ml-4  invisible md:visible lg:visible">Inbox
-            </a>
-            <a href="{% url 'dashboard:index' %}"
-                class="px-5 py-1 text-lg border-2 bg-white text-teal-900 font-crimson rounded-full hover:bg-gray-300 hover:border-gray-300 invisible md:visible lg:visible">Dashboard</a>
-            <a href="{% url 'core:logout' %}"
-                class="px-5 py-1 border-2 border-white text-lg font-crimson bg-white text-orange-600 rounded-full hover:bg-gray-300 hover:border-gray-300 invisible md:visible lg:visible">Logout</a>
-            
-                
-            
-            {%else%}
-            <a href="{% url 'core:login' %}"
-                class="px-5 py-1 border-2 border-indigo-400 text-lg font-crimson text-white  rounded-full  hover:text-gray-300 hover:border-gray-400 invisible md:visible lg:visible">Log
-                in</a>
-            <a href="{%url 'core:signup' %}"
-                class="px-5 py-1 border-2 border-white text-lg font-crimson bg-white text-orange-600 rounded-full hover:bg-gray-300 hover:border-gray-300 invisible md:visible lg:visible">Sign
-                up
-            </a>
-            
-            {%endif%}
-        </div>
-        
-    </nav>  
+    <nav
+      class="p-5 mb-2 bg-teal-800 shadow md:flex md:items-center md:justify-between"
+    >
+      <div class="flex justify-between itens-center text-white">
+        <span class="text-2xl font-crimson">
+              <a href="/" class="pl-8 text-xl text-white font-bold hover:text-gray-300" style="font-family: zen dots;">FundMe</a> 
+        </span>
+        <span class="text-3xl cursor-pointer md:hidden block"><ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
+        </span>
+      </div>
+      <ul
+        class="md:flex md:items-center z-[1] md:z-auto md:static absolute bg-teal-800 w-full md:w-auto left-0 md:p-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500"
+      >
+        <li class="mx-2 my-6 md:my-0">
+          <a href="{% url 'item:new' %}" class="text-xl text-lg text-white font-crimson  hover:text-gray-300 duration-500 md:duration-0 md:invisible lg:visible"
+            >Add your inovations</a
+          >
+        </li>
+        <li class="mx-2 my-6 md:my-0">
+          <a href="{%url 'item:items' %}" class="text-xl text-white font-crimson hover:text-gray-300">Browse</a>
+        </li>
+
+        {% if request.user.is_authenticated%}
+
+        <li class="mx-2 my-6 md:my-0">
+          <a href="{% url 'conversation:inbox' %}" class="text-xl md:px-8 md:py-1 md:border-2 md:border-indigo-400 text-lg font-crimson text-white  rounded-full hover:text-gray-300 duration-500">Inbox</a>
+        </li>
+        <li class="mx-2 my-6 md:my-0">
+          <a href="{% url 'dashboard:index' %}" class="text-xl text-white md:px-5 md:py-1 text-lg md:border-2 md:bg-white md:text-teal-900 font-crimson rounded-full hover:text-gray-300 md:hover:text-teal-900 md:hover:bg-gray-300 md:hover:border-gray-300 duration-500">Dashboard</a>
+        </li>
+        <li class="mx-2 my-6 md:my-0">
+          <a href="{% url 'core:logout' %}" class="text-xl text-white md:px-5 md:py-1 text-lg md:border-2 md:bg-white md:text-orange-600 font-crimson rounded-full hover:text-gray-300 md:hover:text-orange-600 md:hover:bg-gray-300 md:hover:border-gray-300 duration-500">Logout</a>
+        </li>
+
+         {%else%}
+
+        <li class="mx-2 my-6 md:my-0">
+          <a href="{% url 'core:login' %}" class="text-xl md:px-5 md:py-1 md:border-2 md:border-indigo-400 font-crimson text-white rounded-full  hover:text-gray-300 md:hover:border-gray-400 duration-500">Log in</a>
+        </li>
+        <li class="mx-2 my-6 md:my-0">
+          <a href="{%url 'core:signup' %}" class="text-xl text-white md:px-5 md:py-1 md:border-2 md:border-white font-crimson md:bg-white md:text-orange-600 rounded-full hover:text-gray-300 md:hover:text-orange-600 md:hover:bg-gray-300 md:hover:border-gray-300 duration-500">Sign up</a>
+        </li>
+        <h2 class=""></h2>
+
+         {%endif%}
+      </ul>
+    </nav>
+
+    <script>
+    function Menu(e){
+      let list = document.querySelector('ul');
+      e.name === 'menu' ? (e.name = "close",list.classList.add('top-[80px]') , list.classList.add('opacity-100')) :( e.name = "menu" ,list.classList.remove('top-[80px]'),list.classList.remove('opacity-100'))
+    }
+    </script>
 
     <div class="flex-grow">
         {% block content %}
