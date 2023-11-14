@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
-from .models import Item, Category
+from .models import Item, Category, Profile
 from django.contrib.auth.decorators import login_required
 from .forms import NewItemForm, EditItemForm
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 def items(request):
@@ -79,18 +80,26 @@ def edit(request, pk):
     return render(request, "item/form.html", {"form": form, "title": "Edit Project"})
 
 
-@login_required
-def update_progress(request, pk):
-    item = get_object_or_404(Item, pk=pk)
-    if item:
-        item.progress += 1
-        item.save()
-        messages.success(request, f'Progress updated successfully!')
-    else:
-        messages.error(request, f'Failed to update progress!')
 
+@login_required
+def donate_update(request, pk):
+    user = get_object_or_404(User, pk=request.user.id)
+    item = get_object_or_404(Item, pk=pk)
+    if request.method == 'POST':
+        input_number = float(request.POST.get('input_number'))
+        if user and item:
+            input_number = request.POST.get('input_number')
+            user.profile.balance = user.profile.balance - float(input_number)
+            user.save()
+            messages.success(request, f'Balance updated successfully!')
+            item.progress = item.progress + float(input_number)
+            item.save()
+            messages.success(request, f'Progress updated successfully!')
+        else:
+            messages.error(request, f'Failed to update progress!')
+            messages.error(request, f'Failed to update progress!')
     return redirect("item:detail", pk)
 
 @login_required
-def donate(request, pk):
+def donate(request,pk):
     return render(request, "item/donate.html")

@@ -30,30 +30,14 @@
         <a href="{% url 'conversation:new' item.id %}"
             class="inline-block mt-6 px-6 py-3  text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">Contact
             founder</a>
-        <a href="{% url 'item:update_progress' item.id %}" onclick="move()"
-            class="inline-block my-2 mt-2  px-6 py-3  text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">{{ item.progress }}</a>
+        <a href="{% url 'item:donate' item.id %}" onclick="move()"
+            class="inline-block my-2 mt-2  px-6 py-3  text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">Donate</a>
         
         {%endif%}
+
+        <p><strong>Progress: </strong>{{item.progress}}/{{item.donation}}</p>
           
 
-        <div id="myProgress" class="rounded-full bg-gray-600">
-            <div id="myBar" class="rounded-full h-8 text-center text-white">
-                 {{ item.progress }}%
-            </div>
-            <style> 
-                #myProgress {
-                    width: 100%;
-                
-                }
-                #myBar {
-                    width: {{ item.progress }}%;
-                    background-color: #4CAF50;
-                    line-height: 30px; /* To center it vertically */
-                }
-            </style>
-
-    
-        </div>
     </div>
 </div>
 

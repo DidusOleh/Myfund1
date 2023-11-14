@@ -29,3 +29,11 @@ class EditItemForm(forms.ModelForm):
             "donation": forms.NumberInput(attrs={"class": INPUT_CLASSES}),
             "image": forms.FileInput(attrs={"class": INPUT_CLASSES}),
         }
+
+
+class Donate(forms.ModelForm):
+    class Meta:
+        fields = ("amount",)
+        widgets = {
+            "amount": forms.NumberInput(attrs={"class": INPUT_CLASSES}),
+        }

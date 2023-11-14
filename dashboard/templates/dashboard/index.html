@@ -9,7 +9,8 @@
         <h2>Username: {{ user.username }}</h2>
         <h2>Name: {{ user.first_name }}</h2>
         <h2>Surname: {{ user.last_name }}</h2>
-        <h2 class="mb-4">Email: {{ user.email }}</h2>
+        <h2>Email: {{ user.email }}</h2>
+        <h2 class="mb-4">Balance: {{ user.profile.balance }}</h2>
         <a href="{% url 'dashboard:edit' user.id %}" class="mt-4 py-2 px-8 text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">Change information</a>
 	</div>
 </div>
