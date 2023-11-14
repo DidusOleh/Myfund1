@@ -102,4 +102,7 @@ def donate_update(request, pk):
 
 @login_required
 def donate(request,pk):
-    return render(request, "item/donate.html")
+    item = get_object_or_404(Item, pk=pk)
+    return render(
+        request, "item/donate.html", {"item": item}
+    )

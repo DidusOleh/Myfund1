@@ -20,6 +20,15 @@ def index(request):
 def contact(request):
     return render(request, "core\contact.html")
 
+def about(request):
+    return render(request, "core/about.html")
+
+def privacy_policy(request):
+    return render(request, "core/privacy_policy.html")
+
+def term_of_use(request):
+    return render(request, "core/term_of_use.html")
+
 
 def signup(request):
     if request.method == "POST":

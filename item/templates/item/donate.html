@@ -3,26 +3,41 @@
 {%block title %}Donation{%endblock%}
 {%block content %}
 
-<h2 class="mb-12 text-5xl text-center text-white" style="font-family: staatliches;">Donation</h2>
-
-<div class="w-8/12 md:w-1/2 lg:1/2 my-6 mx-auto p-6 rounded-xl grid justify-items-center" style="background: rgba(177, 176, 247, 0.09); ">
-  <h1 class="mb-0 text-3xl  text-white" style="font-family: staatliches;">Donate</h1>
-  <form method="post" action="donate_update">
-      {% csrf_token %}
-      <label for="inputNumber">Enter a Number:</label>
-      <input type="number" id="inputNumber" min="1" max="{{ user.profile.balance }}" name="input_number" required>
-      {% if form.errors or form.non_field_errors%}
-      <div class="mb-3 p-6 bg-red-100 rounded-xl">
-          {% for field in form%}
-          {{ field.errors}}
-          {% endfor %}
-
-          {{form.non_field_errors}}
-      </div>
-      {%endif%}
-      <div class="flex items-center justify-center"> 
-          <button class="mt-2 py-2 px-8 text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">SUBMIT</button>
+<div class="grid sm:grid-cols-5 gap-x-6 gap-y-8 mx-4">
+  <div class="ml-2 col-span-3 flex justify-center rounded-xl">
+      <img src="{{ item.image.url}}" class="rounded-xl object-cover max-h-80" style=" min-height: 400px; min-width: 400px; max-width: 400px;">
   </div>
-  </form>
+  <div class=" text-white col-span-3 sm:col-span-2 p-6 bg-teal-700 rounded-xl width font-crimson">
+      <h1 class="space-y-2 mb-6 text-3xl" style="font-family: staatliches;">{{item.name}}</h1>
+      <p><strong>Donation: </strong>{{item.price}}</p>
+      <p><strong>Founder: </strong>{{item.created_by.username}}</p>
+      {%if item.description %}
+      <p>
+          <strong class="text-">Description: </strong><br>
+          {{item.description}}
+      </p>
+      {%endif%}
+      <p><strong>Progress: </strong>{{item.progress}}/{{item.donation}}</p>
+      <form method="post" action="donate_update">
+        {% csrf_token %}
+        <label for="inputNumber">Enter a Number:</label>
+        <input class="inline-block font-crimson mb-2 text-black text-lg ml-4" type="number" id="inputNumber" min="1" max="{{ user.profile.balance }}" name="input_number" required>
+        {% if form.errors or form.non_field_errors%}
+        <div class="mb-3 p-6 bg-red-100 rounded-xl">
+            {% for field in form%}
+            {{ field.errors}}
+            {% endfor %}
+      
+            {{form.non_field_errors}}
+        </div>
+        {%endif%}
+        <div class="flex items-center justify-center"> 
+            <button class="mt-2 py-2 px-8 text-lg rounded-full font-bold" style="color: #2C4341; background-color: #B3F963; font-family: anonymous pro;">SUBMIT</button>
+      </div>
+      </form>
+        
+
+  </div>
 </div>
 {%endblock%}
+
